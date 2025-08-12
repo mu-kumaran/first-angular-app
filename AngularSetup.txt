@@ -1,0 +1,6 @@
+Angular setup
+-------------
+1. Node js needs to be installed before angular setup.
+2. npm install -g @angular/cli
+3. ng new first-angular-app(Our Project Name) (To create an angular application)
+4. npm start (To start the angular server)
