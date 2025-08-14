@@ -1,0 +1,70 @@
+Creating a basic component:
+---------------------------
+src --> app --> create files of Typescript, html ,css
+eg - header.component.ts , header.component.html, header.component.css
+
+In header.component.ts file
+----------------------------
+import { Component } from "@angular/core";
+
+@Component({
+    selector :'app-header', (selector name specified by us)
+    standalone: true,
+    templateUrl: './header.component.html',
+    styleUrls:['./header.component.css']
+})
+
+export class HeaderComponent {}
+----------------------------------------------------------------------
+While normal markup language and css styling codes used in html and css files created.
+
+In app.component.html and TS file
+----------------------------------
+use selector tags as created in our html component file (as in this eg. header.component.html) and import our header component in app.component.ts file
+
+app.component.html
+------------------
+<app-header></app-header>
+
+app.component.ts
+----------------
+import { HeaderComponent } from './header.component';
+
+@component({
+.................
+.................
+imports: [HeaderComponent],
+.................
+.................
+})
+
+-------------------------------------------------------------------------------------------------
+To add images in JS file
+-------------------------
+- create assets folder in src folder (src --> assets)
+- put your image files in assets folder
+- check in angular.json whether the following format available under assets
+"assets": [
+              "src/assets",
+              "src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+If not create "src/assets" under assets folder
+----------------------------------------------------------------------------------------------------
+To create new component by CLI
+------------------------------
+eg.
+ng generate component user (or)
+ng g c user
+
+- Then CLI will automatically create required folder and component inside the folder
+create src/user/user.component.ts
+create src/user/user.component.html
+create src/user/user.component.css
+create src/user/user.component.spec.ts
+---------------------------------------------------------------------------------------------------------
+
+    
