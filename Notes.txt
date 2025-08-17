@@ -67,4 +67,9 @@ create src/user/user.component.css
 create src/user/user.component.spec.ts
 ---------------------------------------------------------------------------------------------------------
 
+State management mechanism:
+--------------------------
+Two Approaches:
+1. Zone.js approach
+2. Signals approach
     
