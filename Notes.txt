@@ -72,4 +72,11 @@ State management mechanism:
 Two Approaches:
 1. Zone.js approach
 2. Signals approach
-    
+
+Data binding:
+------------
+1. one way data binding:
+- Achieved through String interpolation {{}}, property binding [], event binding (click,input or select etc) = methodname($event)
+
+2. Two way data binding:
+- Achieved using ngModel approach

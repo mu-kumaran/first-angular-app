@@ -1,4 +1,4 @@
-import { Component, signal, computed, Input } from '@angular/core';
+import { Component, signal, computed, Input, input, Output, EventEmitter,output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
@@ -24,16 +24,6 @@ export class UserComponent {
   //   this.selectedUser = DUMMY_USERS[randomIndex]
   // }
 
-  // using input method and creating multiple users
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
-
-  get imagePath(){
-    return 'assets/users/'+ this.avatar;
-  }
-
-  onSelectUser(){}
-  
 
   // state management using signals
   // selectedUser = signal(DUMMY_USERS[randomIndex]);
@@ -45,6 +35,26 @@ export class UserComponent {
   //   this.selectedUser.set(DUMMY_USERS[randomIndex]);
   // }
 
+  // Using signal input method
+  // avatar = input.required<string>();
+  // name = input.required<string>();
+  // imagePath = computed(() => {
+  //   'assets/users/'+ this.avatar();
+  // });
+  // onSelectUser(){}
 
+  // using input method and creating multiple users
+  @Input({required: true}) id!: string;
+  @Input({required: true}) avatar!: string;
+  @Input({required: true}) name!: string;
+  @Output() select = new EventEmitter<string>();
+  // select = output<string>();
+  get imagePath(){
+    return 'assets/users/'+ this.avatar;
+  }
 
+  onSelectUser(){
+    this.select.emit(this.id);
+  }
+  
 }
