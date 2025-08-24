@@ -2,6 +2,20 @@ import { Component, signal, computed, Input, input, Output, EventEmitter,output 
 import { DUMMY_USERS } from '../dummy-users';
 
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
+
+// type User = {
+//   id : string;
+//   avatar: string;
+//   name: string;
+// }
+
+interface User {
+  id : string;
+  avatar: string;
+  name: string;
+}
+//  type or interface both we can use. interface is only used to defined objects. but type used for many purposes
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -44,17 +58,24 @@ export class UserComponent {
   // onSelectUser(){}
 
   // using input method and creating multiple users
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+
+  // 
+  
+  @Input({required: true}) user! : User;
   @Output() select = new EventEmitter<string>();
   // select = output<string>();
+  
   get imagePath(){
-    return 'assets/users/'+ this.avatar;
+    // return 'assets/users/'+ this.avatar;
+    return 'assets/users/'+ this.user.avatar;
   }
 
   onSelectUser(){
-    this.select.emit(this.id);
+    // this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
   
 }

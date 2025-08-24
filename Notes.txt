@@ -65,6 +65,9 @@ create src/user/user.component.ts
 create src/user/user.component.html
 create src/user/user.component.css
 create src/user/user.component.spec.ts
+
+To skip the test file
+ng g c user --skip-tests
 ---------------------------------------------------------------------------------------------------------
 
 State management mechanism:

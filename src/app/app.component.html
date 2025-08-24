@@ -1,7 +1,7 @@
 
 <app-header></app-header>
 <main>
-  <ul id="users">
+  <!-- <ul id="users">
     <li>
       <app-user 
         [id]="dum_users[0].id" 
@@ -34,10 +34,72 @@
         (select)="onSelectUser($event)"
       ></app-user>
     </li>
+  </ul> -->
+  
+  <!-- <ul id="users">
+    <li>
+      <app-user
+        [user] = "dum_users[0]"
+        (select)="onSelectUser($event)"
+      ></app-user>
+    </li>
+    <li>
+      <app-user
+        [user] = "dum_users[1]"
+        (select)="onSelectUser($event)"
+      ></app-user>
+    </li>
+    <li>
+      <app-user
+        [user] = "dum_users[2]"
+        (select)="onSelectUser($event)"
+      ></app-user>
+    </li>
+    <li>
+      <app-user
+        [user] = "dum_users[3]"
+        (select)="onSelectUser($event)"
+      ></app-user>
+    </li> 
+  </ul> -->
+
+  <ul id="users">
+    @for (user of dum_users; track user.id){
+      <li>
+        <app-user [user] = "user" (select)="onSelectUser($event)"></app-user>
+      </li>
+    }
   </ul>
 
+  <!-- Using directives ngFor -->
+  <!-- <ul id="users">
+      <li *ngFor="let user of dum_users">
+        <app-user [user] = "user" (select)="onSelectUser($event)"></app-user>
+      </li>
+  </ul> -->
+
   <!-- TASKS THAT USER CAN ADD -->
-  <app-tasks></app-tasks>
+  <!-- <app-tasks [name] = "selectedUser.name"></app-tasks> -->
+
+  <!-- 
+  <app-tasks [name] = "selectedUser?.name"></app-tasks>
+  <app-tasks [name] = "selectedUser ? selectedUser.name : '' "></app-tasks>
+   -->
+
+   @if (selectedUserId) {
+      <app-tasks [name] = "selectedUser.name"></app-tasks>
+   }
+   @else{
+      <p id="fallback">Select a user to see their tasks!</p>
+   }
+
+   <!-- Using directives ngIf -->
+   <!-- <app-tasks *ngIf="selectedUser; else ngtemp" [name] = "selectedUser!.name"></app-tasks>
+   <ng-template #ngtemp>
+      <p id="fallback">Select a user to see their tasks!</p>
+   </ng-template> -->
+
+
 </main>
 
 <router-outlet />
