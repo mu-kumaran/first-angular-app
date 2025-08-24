@@ -1,5 +1,7 @@
 import { Component, signal, computed, Input, input, Output, EventEmitter,output } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
+import { User } from './user.model';
+//import { type User } from './user.model';
 
 const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
 
@@ -9,11 +11,11 @@ const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
 //   name: string;
 // }
 
-interface User {
-  id : string;
-  avatar: string;
-  name: string;
-}
+// interface User {
+//   id : string;
+//   avatar: string;
+//   name: string;
+// }
 //  type or interface both we can use. interface is only used to defined objects. but type used for many purposes
 
 @Component({
@@ -65,6 +67,7 @@ export class UserComponent {
   // 
   
   @Input({required: true}) user! : User;
+  @Input({required:true}) selected! : boolean;
   @Output() select = new EventEmitter<string>();
   // select = output<string>();
   

@@ -1,4 +1,23 @@
 
-<div>
+<!-- <div>
     <p id="fallback">{{name}}</p>
-</div>
+</div> -->
+@if(isAddingTask){
+    <app-new-task (cancel)="onCancelAddTask()"></app-new-task>
+}
+<section id="tasks">
+    <header>
+        <h2>{{name}}'s Tasks</h2>
+        <menu>
+            <button (click)="onStartAddTask()">Add Task</button>
+        </menu>
+    </header>
+
+<ul>
+    @for(task of selectedUserTasks; track task.id){
+        <li>
+            <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+        </li>
+    }
+</ul>
+</section>
